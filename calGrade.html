@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CalculateGrade</title>
+  <script>
+    function calculateGrade() {
+              let name = document.getElementById("name").value;
+              let surname = document.getElementById("surname").value;
+              let studentId = document.getElementById("studentId").value;
+              let score = parseFloat(document.getElementById("score").value);
+  
+              if (score > 100) {
+                  alert("คะแนนที่ระบุมากกว่า 100");
+              } else if (score >= 90 && score <= 100) {
+                  showResult(name, surname, studentId, score, "A");
+
+              } else if (score >= 80 && score <= 89.99) {
+                  showResult(name, surname, studentId, score, "B");
+
+              } else if (score >= 60 && score <= 79.99) {
+                  showResult(name, surname, studentId, score, "C");
+
+              } else if (score >= 50 && score <= 69.99) {
+                  showResult(name, surname, studentId, score, "D");
+
+              } else if (score >= 0 && score <= 49.99) {
+                  showResult(name, surname, studentId, score, "F");
+
+              } else {
+                  alert("คะแนนที่ระบุไม่ถูกต้อง");
+              }
+          }
+  
+          function showResult(name, surname, studentId, score, grade) {
+              let result = document.getElementById("result");
+              result.innerHTML = "นักศึกษา: " + name + " " + surname +
+                  "<br>รหัสนักศึกษา: " + studentId +
+                  "<br>คะแนน: " + score.toFixed(2) +
+                  "<br>เกรด: " + grade;
+          }
+  </script>
+</head>
+<form>
+  <body>
+    <h1>ตรวจสอบเกรดนักศึกษา</h1>
+      <form>
+          <label for="name">ชื่อ:</label>
+          <input type="text" id="name" required><br>
+  
+          <label for="surname">นามสกุล:</label>
+          <input type="text" id="surname" required><br>
+  
+          <label for="studentId">รหัสนักศึกษา:</label>
+          <input type="text" id="studentId" required><br>
+  
+          <label for="score">คะแนน:</label>
+          <input type="number" id="score" step="0.01" required><br>
+  
+          <button type="button" onclick="calculateGrade()">ตรวจสอบเกรด</button>
+      </form>
+  
+      <div id="result"></div>
+  </body>
+</form>
+</head>
+</html>
